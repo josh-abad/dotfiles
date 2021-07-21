@@ -1,3 +1,9 @@
+let data_dir = stdpath('data') . '/site'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-commentary'
@@ -5,7 +11,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
-Plug 'folke/tokyonight.nvim'
+Plug 'rose-pine/neovim'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
@@ -13,7 +22,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-colors.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
@@ -69,7 +78,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "vuels", "tsserver", "pyright" }
+local servers = { "vuels", "tsserver" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -83,18 +92,19 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+
+vim.g.rose_pine_enable_italics = true
+vim.g.rose_pine_disable_background = true
+
+require('gitsigns').setup()
 EOF
 
 set number
+set relativenumber
 set mouse=a
 set termguicolors
 
-set background=dark
-
-let g:tokyonight_style = 'night'
-let g:tokyonight_italic_functions = 1
-
-colorscheme tokyonight
+colorscheme rose-pine
 
 let g:indent_blankline_char = '▏'
 
@@ -106,3 +116,6 @@ let g:compe.source = {
   \ 'buffer': v:true,
   \ 'nvim_lsp': v:true,
   \ }
+
+au VimLeave,VimSuspend * set guicursor=a:ver1-blinkon1
+
