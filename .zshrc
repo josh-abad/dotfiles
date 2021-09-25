@@ -15,9 +15,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-eval `ssh-agent -s` > /dev/null 2>&1
-ssh-add ~/.ssh/proctor-vue-node.pem > /dev/null 2>&1
+# alias winget='powershell.exe /c winget'
 
 # Set up the prompt
 
@@ -84,7 +82,6 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit light trystan2k/zsh-tab-title
 
 zinit wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
