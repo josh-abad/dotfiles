@@ -1,5 +1,9 @@
 # Dotfiles
 
+- Neovim config
+- ZSH plugins/completions
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+
 ## Installation
 Place this alias in .zshrc.
 ```bash
