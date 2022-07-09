@@ -71,3 +71,7 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
