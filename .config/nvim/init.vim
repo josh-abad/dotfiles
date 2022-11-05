@@ -45,9 +45,11 @@ lua << EOF
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_transparent = true
 vim.cmd[[colorscheme tokyonight]]
+require("tokyonight").setup({
+  style = "night",
+  transparent = true
+})
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'bash', 'html', 'java', 'javascript', 'lua', 'rust', 'tsx', 'typescript', 'vim' },
@@ -112,7 +114,7 @@ cmp.setup.cmdline(':', {
   })
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = { 'bashls', 'rls', 'tsserver', 'vimls' }
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
