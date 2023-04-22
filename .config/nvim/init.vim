@@ -45,11 +45,11 @@ lua << EOF
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.cmd[[colorscheme tokyonight]]
 require("tokyonight").setup({
   style = "night",
   transparent = true
 })
+vim.cmd[[colorscheme tokyonight]]
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'bash', 'html', 'java', 'javascript', 'lua', 'rust', 'tsx', 'typescript', 'vim' },
