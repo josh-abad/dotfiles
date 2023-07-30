@@ -21,7 +21,9 @@ promptinit
 
 setopt histignorealldups sharehistory
 
-bindkey -v
+bindkey -e
+
+bindkey '^H' backward-kill-word
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
