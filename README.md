@@ -3,6 +3,7 @@
 - Neovim config
 - ZSH plugins/completions
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- Test
 
 ## Installation
 Place this alias in .zshrc.
